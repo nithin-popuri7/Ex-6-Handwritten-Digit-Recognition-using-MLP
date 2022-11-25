@@ -86,8 +86,8 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     W2 = W2 - alpha * dW2  
     b2 = b2 - alpha * db2    
     return W1, b1, W2, b2
-    ```
-    ```
+```
+```
     def get_predictions(A2):
     return np.argmax(A2, 0)
 
@@ -106,11 +106,11 @@ def gradient_descent(X, Y, alpha, iterations):
             predictions = get_predictions(A2)
             print(get_accuracy(predictions, Y))
     return W1, b1, W2, b2
-    ```
-    ```
+```
+```
     W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
-    ```
-    ```
+```
+```
     def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
@@ -127,7 +127,7 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
-    ```
+```
 ```
     test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
