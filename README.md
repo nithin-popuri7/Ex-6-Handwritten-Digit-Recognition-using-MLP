@@ -22,13 +22,14 @@ Create GUI to predict digits.Now for the GUI, we have created a new file in whic
 ### Developed By: P.Siva Naga Nithin.
 ### Reg.No: 212221240037
 ```
+import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
 data = pd.read_csv('train.csv')
 data = np.array(data)
 m, n = data.shape
-np.random.shuffle(data) 
+np.random.shuffle(data) # shuffle before splitting into dev and training sets
 
 data_dev = data[0:1000].T
 Y_dev = data_dev[0]
@@ -129,6 +130,7 @@ test_prediction(2, W1, b1, W2, b2)
 test_prediction(3, W1, b1, W2, b2)
 dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
 get_accuracy(dev_predictions, Y_dev)
+
 ```
 
 
