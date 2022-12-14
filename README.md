@@ -22,34 +22,26 @@ Create GUI to predict digits.Now for the GUI, we have created a new file in whic
 ### Developed By: P.Siva Naga Nithin.
 ### Reg.No: 212221240037
 ```
-import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
-data = pd.read_csv("train.csv")
 
-```
-```
+data = pd.read_csv('train.csv')
 data = np.array(data)
 m, n = data.shape
-np.random.shuffle(data)
-```
-```
+np.random.shuffle(data) 
+
 data_dev = data[0:1000].T
 Y_dev = data_dev[0]
 X_dev = data_dev[1:n]
 X_dev = X_dev / 255.
-```
-```
+
 data_train = data[1000:m].T
 Y_train = data_train[0]
 X_train = data_train[1:n]
 X_train = X_train / 255.
 _,m_train = X_train.shape
-````
-```
 Y_train
-```
-```
+
 def init_params():
     W1 = np.random.rand(10, 784) - 0.5
     b1 = np.random.rand(10, 1) - 0.5
@@ -96,9 +88,7 @@ def update_params(W1, b1, W2, b2, dW1, db1, dW2, db2, alpha):
     W2 = W2 - alpha * dW2  
     b2 = b2 - alpha * db2    
     return W1, b1, W2, b2
-```
-```
-    def get_predictions(A2):
+def get_predictions(A2):
     return np.argmax(A2, 0)
 
 def get_accuracy(predictions, Y):
@@ -116,12 +106,8 @@ def gradient_descent(X, Y, alpha, iterations):
             predictions = get_predictions(A2)
             print(get_accuracy(predictions, Y))
     return W1, b1, W2, b2
-```
-```
-    W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
-```
-```
-    def make_predictions(X, W1, b1, W2, b2):
+W1, b1, W2, b2 = gradient_descent(X_train, Y_train, 0.10, 500)
+def make_predictions(X, W1, b1, W2, b2):
     _, _, _, A2 = forward_prop(W1, b1, W2, b2, X)
     predictions = get_predictions(A2)
     return predictions
@@ -137,12 +123,12 @@ def test_prediction(index, W1, b1, W2, b2):
     plt.gray()
     plt.imshow(current_image, interpolation='nearest')
     plt.show()
-```
-```
 test_prediction(0, W1, b1, W2, b2)
 test_prediction(1, W1, b1, W2, b2)
 test_prediction(2, W1, b1, W2, b2)
 test_prediction(3, W1, b1, W2, b2)
+dev_predictions = make_predictions(X_dev, W1, b1, W2, b2)
+get_accuracy(dev_predictions, Y_dev)
 ```
 
 
